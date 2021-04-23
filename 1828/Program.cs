@@ -51,7 +51,7 @@ namespace _1828
             // https://www.expii.com/t/distance-formula-4560
             // (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) <= r * r
 
-            var result = new int[3];
+            var result = new int[queries.Length];
 
             for (int i = 0; i < queries.Length; i++)
             {
