@@ -25,46 +25,27 @@ namespace _1290
                         new ListNode(0,
                             new ListNode(0,
                                 new ListNode(1,
-                                    new ListNode(0,
-                                        new ListNode(0,
-                                            new ListNode(1,
-                                                new ListNode(1,
-                                                    new ListNode(1,
-                                                        new ListNode(0,
-                                                            new ListNode(0,
-                                                                new ListNode(0,
-                                                                    new ListNode(0,
-                                                                        new ListNode(0,
-                                                                            new ListNode(0)
-                                                                        )
-                                                                    )
-                                                                )
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
+                                    new ListNode(0
                                     )
                                 )
                             )
                         )
                     )
                 ),
-                18880);
+                18);
         }
 
         private static int GetDecimalValue(ListNode head)
         {
-            if (head.next == null)
-                return head.val;
+            if (head.Next == null)
+                return head.Val;
 
-            BigInteger result = head.val;
-            while (head.next != null)
+            BigInteger result = head.Val;
+            while (head.Next != null)
             {
-                head = head.next;
+                head = head.Next;
                 result *= 10;
-                result += head.val;
+                result += head.Val;
             }
 
             int base1 = 1;
@@ -83,13 +64,13 @@ namespace _1290
 
     public class ListNode
     {
-        public readonly int val;
-        public readonly ListNode next;
+        public readonly int Val;
+        public readonly ListNode Next;
 
         public ListNode(int val, ListNode next = null)
         {
-            this.val = val;
-            this.next = next;
+            Val = val;
+            Next = next;
         }
     }
 }
