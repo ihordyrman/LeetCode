@@ -18,13 +18,15 @@ namespace _1221
 
         private static int BalancedStringSplit(string s)
         {
-            var moveTo = 0;
-            var count = 0;
-            for (var i = 0; i < s.Length; i = moveTo)
+            int moveTo = 0;
+            int count = 0;
+
+            for (int i = 0; i < s.Length; i = moveTo)
             {
-                var rCount = 0;
-                var lCount = 0;
-                for (var j = i; j < s.Length; j++)
+                int rCount = 0;
+                int lCount = 0;
+
+                for (int j = i; j < s.Length; j++)
                 {
                     switch (s[j])
                     {
@@ -44,6 +46,7 @@ namespace _1221
                     }
                 }
             }
+
             return count;
         }
     }
