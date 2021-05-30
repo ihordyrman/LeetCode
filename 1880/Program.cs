@@ -1,5 +1,4 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 
 namespace _1880
 {
@@ -18,21 +17,21 @@ namespace _1880
 
         private static bool IsSumEqual(string firstWord, string secondWord, string targetWord)
         {
-            return Length(firstWord) + Length(secondWord) == Length(targetWord);
+            return GetLength(firstWord) + GetLength(secondWord) == GetLength(targetWord);
 
-            int Length(string word)
+            int GetLength(string word)
             {
-                int sum = 0;
+                int length = 0;
                 int index = 0;
 
                 while (index < word.Length)
                 {
-                    sum *= 10;
-                    sum += word[index] - 97;
+                    length *= 10;
+                    length += word[index] - 97;
                     index++;
                 }
 
-                return sum;
+                return length;
             }
         }
     }
