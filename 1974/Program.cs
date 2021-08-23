@@ -1,23 +1,22 @@
 ﻿// 1974. Minimum Time to Type Word Using Special Typewriter
 // https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter/
 
-using System;
 using Xunit;
 
-Assert.Equal(MinTimeToType("abc"), 5);
-Assert.Equal(MinTimeToType("bza"), 7);
-Assert.Equal(MinTimeToType("zjpc"), 34);
-Assert.Equal(MinTimeToType("pdy"), 31); // TODO: Not finished yet
+Assert.Equal(5, MinTimeToType("abc"));
+Assert.Equal(7, MinTimeToType("bza"));
+Assert.Equal(34, MinTimeToType("zjpc"));
+Assert.Equal(31, MinTimeToType("pdy"));
 
 int MinTimeToType(string word)
 {
-    char last = 'a';
+    char a = 'a';
     int pointer = 0;
     int moves = 0;
 
     foreach (var ch in word)
     {
-        int wordPosition = ch - last;
+        int wordPosition = ch - 'a';
 
         if (wordPosition == pointer)
         {
@@ -26,8 +25,8 @@ int MinTimeToType(string word)
             continue;
         }
 
-        int right = (ch - last + 26) % 26;
-        int left = (last - ch + 26) % 26;
+        int right = (ch - a + 26) % 26;
+        int left = (a - ch + 26) % 26;
         bool toTheLeft = left < right;
 
         while (pointer != wordPosition)
@@ -59,6 +58,7 @@ int MinTimeToType(string word)
         }
 
         moves++;
+        a = ch;
     }
 
     return moves;
