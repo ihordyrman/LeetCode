@@ -1,4 +1,4 @@
-*.rsuser
+﻿*.rsuser
 *.userosscache
 *.sln.docstates
 *.userprefs
@@ -233,7 +233,6 @@ crashlytics-build.properties
 fabric.properties
 .idea/httpRequests
 .idea/caches/build_file_checksums.ser
-*.sln
 .vscode
 metadata.json
 dotnet-tools.json
