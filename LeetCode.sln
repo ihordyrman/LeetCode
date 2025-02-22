@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{42AAB946-8046-4D4E-B14C-5FCCE24A8363}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCode.Problems", "LeetCode.Problems\LeetCode.Problems.csproj", "{42AAB946-8046-4D4E-B14C-5FCCE24A8363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCode.Benchy", "LeetCode.Benchy\LeetCode.Benchy.csproj", "{E0E7131D-88BF-42D4-BDD5-AAA57908047E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{642EEF6F-03C1-4D77-B6A7-CCB495E64BC8}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,5 +28,9 @@ Global
 		{42AAB946-8046-4D4E-B14C-5FCCE24A8363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42AAB946-8046-4D4E-B14C-5FCCE24A8363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42AAB946-8046-4D4E-B14C-5FCCE24A8363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E7131D-88BF-42D4-BDD5-AAA57908047E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E7131D-88BF-42D4-BDD5-AAA57908047E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E7131D-88BF-42D4-BDD5-AAA57908047E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E7131D-88BF-42D4-BDD5-AAA57908047E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
