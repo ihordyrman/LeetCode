@@ -1,8 +1,8 @@
 ﻿{
-    "profiles": {
-        "LeetCode.Generators": {
-            "commandName": "DebugRoslynComponent",
-            "targetProject": "../LeetCode/LeetCode.csproj"
-        }
+  "profiles": {
+    "LeetCode.Generators": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../LeetCode/LeetCode.csproj"
     }
+  }
 }
