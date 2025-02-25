@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Runner.Easy;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     704. Binary Search

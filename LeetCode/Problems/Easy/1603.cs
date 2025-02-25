@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1603;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1603. Design Parking System
@@ -20,13 +20,13 @@ public class _1603
 
 public class ParkingSystem
 {
-    private int _big, _medium, _small;
+    private int big, medium, small;
 
     public ParkingSystem(int big, int medium, int small)
     {
-        _big = big;
-        _small = small;
-        _medium = medium;
+        this.big = big;
+        this.small = small;
+        this.medium = medium;
     }
 
     public bool AddCar(int carType)
@@ -34,28 +34,28 @@ public class ParkingSystem
         switch (carType)
         {
             case 1:
-                if (_big == 0)
+                if (big == 0)
                 {
                     return false;
                 }
 
-                _big--;
+                big--;
                 return true;
             case 2:
-                if (_medium == 0)
+                if (medium == 0)
                 {
                     return false;
                 }
 
-                _medium--;
+                medium--;
                 return true;
             default:
-                if (_small == 0)
+                if (small == 0)
                 {
                     return false;
                 }
 
-                _small--;
+                small--;
                 return true;
         }
     }

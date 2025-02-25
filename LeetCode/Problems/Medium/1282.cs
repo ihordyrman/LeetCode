@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1282;
+namespace LeetCode.Problems.Medium;
 
 /// <summary>
 ///     1282. Group the People Given the Group Size They Belong To

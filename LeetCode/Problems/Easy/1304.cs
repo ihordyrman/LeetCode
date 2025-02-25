@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1304;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1304. Find N Unique Integers Sum up to Zero

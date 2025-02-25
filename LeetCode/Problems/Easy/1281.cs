@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1281;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1281. Subtract the Product and Sum of Digits of an Integer

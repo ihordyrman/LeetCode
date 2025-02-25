@@ -10,13 +10,13 @@ public class _910
 {
     public _910()
     {
-        Assert.Equal(SmallestRangeII(new[] { 1, 7, 3, 5 }, 6), 6);
-        Assert.Equal(SmallestRangeII(new[] { 1 }, 0), 1);
-        Assert.Equal(SmallestRangeII(new[] { 0, 10 }, 2), 6);
-        Assert.Equal(SmallestRangeII(new[] { 1, 3, 6 }, 3), 3);
+        Assert.Equal(SmallestRangeIi(new[] { 1, 7, 3, 5 }, 6), 6);
+        Assert.Equal(SmallestRangeIi(new[] { 1 }, 0), 1);
+        Assert.Equal(SmallestRangeIi(new[] { 0, 10 }, 2), 6);
+        Assert.Equal(SmallestRangeIi(new[] { 1, 3, 6 }, 3), 3);
     }
 
-    private static int SmallestRangeII(int[] nums, int k)
+    private static int SmallestRangeIi(int[] nums, int k)
     {
         Array.Sort(nums);
 

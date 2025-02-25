@@ -1,4 +1,4 @@
-﻿using LeetCode.Problems.Structures;
+﻿using LeetCode.Structures;
 using Xunit;
 
 namespace LeetCode.Problems.Medium;

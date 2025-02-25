@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1221;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1221. Split a String in Balanced Strings

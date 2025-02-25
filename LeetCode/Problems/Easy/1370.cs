@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1370;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1370. Increasing Decreasing String

@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _1046;
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1046. Last Stone Weight
@@ -8,7 +8,7 @@ namespace _1046;
 /// </summary>
 public class _1046
 {
-    public _1046() => Assert.Equal(LastStoneWeight(new[] { 2, 7, 4, 1, 8, 1 }), 1);
+    public _1046() => Assert.Equal(LastStoneWeight([2, 7, 4, 1, 8, 1]), 1);
 
     private static int LastStoneWeight(int[] stones)
     {

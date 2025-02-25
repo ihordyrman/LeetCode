@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace _745;
+namespace LeetCode.Problems.Hard;
 
 /// <summary>
 ///     745. Prefix and Suffix Search
@@ -8,14 +8,14 @@ namespace _745;
 /// </summary>
 public class _745
 {
+    private readonly WordFilter wordFilter = new(
+    [
+        "cabaabaaaa", "ccbcababac", "bacaabccba", "bcbbcbacaa", "abcaccbcaa", "accabaccaa", "cabcbbbcca", "ababccabcb", "caccbbcbab",
+        "bccbacbcba"
+    ]);
+
     public _745()
     {
-        var wordFilter = new WordFilter(
-        [
-            "cabaabaaaa", "ccbcababac", "bacaabccba", "bcbbcbacaa", "abcaccbcaa", "accabaccaa", "cabcbbbcca", "ababccabcb", "caccbbcbab",
-            "bccbacbcba"
-        ]);
-
         Assert.Equal(wordFilter.F("bccbacbcba", "a"), 9);
         Assert.Equal(wordFilter.F("ab", "abcaccbcaa"), 4);
         Assert.Equal(wordFilter.F("a", "aa"), 5);
@@ -31,15 +31,15 @@ public class _745
 
     public class WordFilter
     {
-        private readonly Dictionary<string, int> _dictionary = new();
+        private readonly Dictionary<string, int> dictionary = new();
 
         public WordFilter(string[] words)
         {
             for (var i = 0; i < words.Length; i++)
             {
-                if (!_dictionary.TryAdd(words[i], i))
+                if (!dictionary.TryAdd(words[i], i))
                 {
-                    _dictionary[words[i]] = i;
+                    dictionary[words[i]] = i;
                 }
             }
         }
@@ -48,7 +48,7 @@ public class _745
         {
             int index = -1;
 
-            foreach (KeyValuePair<string, int> word in _dictionary)
+            foreach (KeyValuePair<string, int> word in dictionary)
             {
                 if (word.Key.StartsWith(prefix) && word.Key.EndsWith(suffix))
                 {

@@ -1,4 +1,6 @@
-﻿namespace _876;
+﻿using LeetCode.Structures;
+
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     876. Middle of the Linked List
@@ -6,7 +8,7 @@
 /// </summary>
 public class _876
 {
-    public static ListNode MiddleNode(ListNode head)
+    public static ListNode? MiddleNode(ListNode head)
     {
         if (head == null)
         {
@@ -15,10 +17,10 @@ public class _876
 
         ListNode tempNode = head;
         var count = 0;
-        while (tempNode.next != null)
+        while (tempNode.Next != null)
         {
             count++;
-            tempNode = tempNode.next;
+            tempNode = tempNode.Next;
         }
 
         int middle = count / 2;
@@ -32,17 +34,9 @@ public class _876
         while (count != middle)
         {
             count++;
-            head = head.next;
+            head = head.Next;
         }
 
         return head;
     }
-}
-
-public class ListNode
-{
-    public readonly ListNode next;
-    public readonly int val;
-
-    protected ListNode(int x) => val = x;
 }
