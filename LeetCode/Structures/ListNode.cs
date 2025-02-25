@@ -1,13 +1,7 @@
 ﻿namespace LeetCode.Structures;
 
-public class ListNode
+public class ListNode(int val, ListNode? next = null)
 {
-    public readonly ListNode Next;
-    public readonly int Val;
-
-    public ListNode(int val, ListNode next = null)
-    {
-        Val = val;
-        Next = next;
-    }
+    public readonly ListNode? Next = next;
+    public readonly int Val = val;
 }

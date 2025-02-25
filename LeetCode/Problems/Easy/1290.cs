@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using LeetCode.Generators;
 using LeetCode.Structures;
 
 namespace LeetCode.Problems.Easy;
@@ -7,7 +8,7 @@ namespace LeetCode.Problems.Easy;
 ///     1290. Convert Binary Number in a Linked List to Integer
 ///     https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
 /// </summary>
-public class _1290 : IProblem
+public class _1290
 {
     private static readonly ListNode Node = new(1, new ListNode(0, new ListNode(0, new ListNode(1, new ListNode(0)))));
 
@@ -39,5 +40,6 @@ public class _1290 : IProblem
         return (int)resultValue;
     }
 
-    public void Execute() => GetDecimalValue(Node);
+    [Executable]
+    public void ConvertBinaryNumber() => GetDecimalValue(Node);
 }

@@ -14,12 +14,12 @@ public class _1302
         var treeNode = new TreeNode(
             1,
             new TreeNode(2, new TreeNode(4, new TreeNode(7)), new TreeNode(5)),
-            new TreeNode(3, null, new TreeNode(6, null, new TreeNode(8))));
+            new TreeNode(3, null!, new TreeNode(6, null!, new TreeNode(8))));
 
         Assert.Equal(15, DeepestLeavesSum(treeNode));
     }
 
-    private int DeepestLeavesSum(TreeNode root)
+    private int DeepestLeavesSum(TreeNode? root)
     {
         var maxDepth = 0;
         var maxValue = new Dictionary<int, int>();
@@ -27,7 +27,7 @@ public class _1302
 
         return maxValue[maxDepth];
 
-        void Traverse(TreeNode node, int depth, ref int maxDepth, Dictionary<int, int> maxValue)
+        void Traverse(TreeNode? node, int depth, ref int maxD, Dictionary<int, int> maxV)
         {
             // check current node
             if (node is null)
@@ -37,23 +37,23 @@ public class _1302
 
             if (node.Left is null && node.Right is null)
             {
-                if (depth >= maxDepth)
+                if (depth >= maxD)
                 {
-                    maxDepth = depth;
-                    if (maxValue.ContainsKey(depth))
+                    maxD = depth;
+                    if (maxV.ContainsKey(depth))
                     {
-                        maxValue[depth] += node.Val;
+                        maxV[depth] += node.Val;
                     }
                     else
                     {
-                        maxValue.Add(depth, node.Val);
+                        maxV.Add(depth, node.Val);
                     }
                 }
             }
 
             // Traverse to the left and right nodes
-            Traverse(node.Left!, depth + 1, ref maxDepth, maxValue);
-            Traverse(node.Right!, depth + 1, ref maxDepth, maxValue);
+            Traverse(node.Left!, depth + 1, ref maxD, maxV);
+            Traverse(node.Right!, depth + 1, ref maxD, maxV);
         }
     }
 }

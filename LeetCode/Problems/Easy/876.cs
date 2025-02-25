@@ -34,7 +34,7 @@ public class _876
         while (count != middle)
         {
             count++;
-            head = head.Next;
+            head = head.Next!;
         }
 
         return head;

@@ -18,11 +18,11 @@ public class _226
         InvertNodes(root);
         return root;
 
-        static void InvertNodes(TreeNode node)
+        static void InvertNodes(TreeNode? node)
         {
-            TreeNode left = null!;
-            TreeNode right = null!;
-            if (node.Left != null)
+            TreeNode? left = null!;
+            TreeNode? right = null!;
+            if (node!.Left != null)
             {
                 left = node.Left;
                 InvertNodes(left);
