@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,12 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1967
 {
-    public _1967()
-    {
-        Assert.Equal(3, NumOfStrings(["a", "abc", "bc", "d"], "abc"));
-        Assert.Equal(2, NumOfStrings(["a", "b", "c"], "aaaaabbbbb"));
-        Assert.Equal(3, NumOfStrings(["a", "a", "a"], "ab"));
-    }
+    private static readonly (string[] patterns, string word) Input = (["a", "abc", "bc", "d"], "abc");
+
+    [BenchmarkGen]
+    public void NumOfStrings() => NumOfStrings(Input.patterns, Input.word);
 
     private int NumOfStrings(string[] patterns, string word)
     {

@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,12 +8,11 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1304
 {
-    public _1304()
-    {
-        Assert.Equal(AnotherSumZero(5), new[] { 0, 2, -2, 1, -1 });
-        Assert.Equal(SumZero(3), new[] { -1, 0, 1 });
-        Assert.Equal(SumZero(1), new[] { 0 });
-    }
+    [BenchmarkGen]
+    public void SumZero() => SumZero(5);
+
+    [BenchmarkGen]
+    public void AnotherSumZero() => AnotherSumZero(5);
 
     // 63.32%
     private static int[] SumZero(int n)

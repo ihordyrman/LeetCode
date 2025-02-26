@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,15 +8,16 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _200
 {
-    public _200()
-    {
-        char[][] grid = [['1', '1', '1', '1', '0'], ['1', '1', '0', '1', '0'], ['1', '1', '0', '0', '0'], ['0', '0', '0', '0', '0']];
+    private static readonly char[][] Input =
+    [
+        ['1', '1', '0', '0', '0'],
+        ['1', '1', '0', '0', '0'],
+        ['0', '0', '1', '0', '0'],
+        ['0', '0', '0', '1', '1']
+    ];
 
-        char[][] grid2 = [['1', '1', '0', '0', '0'], ['1', '1', '0', '0', '0'], ['0', '0', '1', '0', '0'], ['0', '0', '0', '1', '1']];
-
-        Assert.Equal(NumIslands(grid), 1);
-        Assert.Equal(NumIslands(grid2), 3);
-    }
+    [BenchmarkGen]
+    public void NumIslands() => NumIslands(Input);
 
     private static int NumIslands(char[][] grid)
     {

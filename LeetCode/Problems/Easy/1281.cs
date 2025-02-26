@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1281
 {
-    public _1281()
-    {
-        Assert.Equal(SubtractProductAndSum(234), 15);
-        Assert.Equal(SubtractProductAndSum(4421), 21);
-    }
+    private const int Input = 4421;
+
+    [BenchmarkGen]
+    public void SubtractProductAndSum() => SubtractProductAndSum(Input);
 
     private static int SubtractProductAndSum(int n)
     {

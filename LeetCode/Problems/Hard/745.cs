@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Hard;
 
@@ -8,28 +8,30 @@ namespace LeetCode.Problems.Hard;
 /// </summary>
 public class _745
 {
-    private readonly WordFilter wordFilter = new(
+    // TODO: not finished yet.
+    // Logic works correct, but still can't pass timeout validation.
+    // Need to switch from dictionary to prefix tree.
+
+    private static readonly WordFilter Filter = new(
     [
-        "cabaabaaaa", "ccbcababac", "bacaabccba", "bcbbcbacaa", "abcaccbcaa", "accabaccaa", "cabcbbbcca", "ababccabcb", "caccbbcbab",
+        "cabaabaaaa",
+        "ccbcababac",
+        "bacaabccba",
+        "bcbbcbacaa",
+        "abcaccbcaa",
+        "accabaccaa",
+        "cabcbbbcca",
+        "ababccabcb",
+        "caccbbcbab",
         "bccbacbcba"
     ]);
 
-    public _745()
-    {
-        Assert.Equal(wordFilter.F("bccbacbcba", "a"), 9);
-        Assert.Equal(wordFilter.F("ab", "abcaccbcaa"), 4);
-        Assert.Equal(wordFilter.F("a", "aa"), 5);
-        Assert.Equal(wordFilter.F("cabaaba", "abaaaa"), 0);
-        Assert.Equal(wordFilter.F("cacc", "accbbcbab"), 8);
-        Assert.Equal(wordFilter.F("ccbcab", "bac"), 1);
-        Assert.Equal(wordFilter.F("bac", "cba"), 2);
+    private static readonly (string prefix, string suffix) Input = ("bccbacbcba", "a");
 
-        // TODO: not finished yet.
-        // Logic works correct, but still can't pass timeout validation.
-        // Need to switch from dictionary to prefix tree.
-    }
+    [BenchmarkGen]
+    public void F() => Filter.F(Input.prefix, Input.suffix);
 
-    public class WordFilter
+    private class WordFilter
     {
         private readonly Dictionary<string, int> dictionary = new();
 

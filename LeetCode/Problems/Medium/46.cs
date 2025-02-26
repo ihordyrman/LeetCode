@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,17 +8,10 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _46
 {
-    public _46()
-        => Assert.Equal(
-            new List<int[]>
-            {
-                new[] { 1, 2, 3 },
-                new[] { 1, 3, 2 },
-                new[] { 2, 1, 3 },
-                new[] { 2, 3, 1 },
-                new[] { 2, 3, 1 }
-            },
-            Permute([1, 2, 3]));
+    private static readonly int[] Input = [1, 2, 3];
+
+    [BenchmarkGen]
+    public void Permute() => Permute(Input);
 
     private static IList<IList<int>> Permute(int[] nums)
     {

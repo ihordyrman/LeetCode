@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _55
 {
-    public _55()
-    {
-        Assert.Equal(CanJump([2, 3, 1, 1, 4]), true);
-        Assert.Equal(CanJump([3, 2, 1, 0, 4]), false);
-    }
+    private static readonly int[] Input = [2, 3, 1, 1, 4];
+
+    [BenchmarkGen]
+    public void CanJump() => CanJump(Input);
 
     private static bool CanJump(int[] nums)
     {

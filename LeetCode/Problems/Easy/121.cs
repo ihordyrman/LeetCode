@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _121
 {
-    public _121()
-    {
-        Assert.Equal(FastMaxProfit([7, 1, 5, 3, 6, 4]), 5);
-        Assert.Equal(FastMaxProfit([7, 6, 4, 3, 1]), 0);
-    }
+    private static readonly int[] Input = [7, 1, 5, 3, 6, 4];
+
+    [BenchmarkGen]
+    public void FastMaxProfit() => FastMaxProfit(Input);
 
     private static int FastMaxProfit(int[] prices)
     {

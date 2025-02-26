@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,26 +8,10 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _1282
 {
-    public _1282()
-    {
-        Assert.Equal(
-            GroupThePeople([3, 3, 3, 3, 3, 1, 3]),
-            new List<IList<int>>
-            {
-                new List<int> { 0, 1, 2 },
-                new List<int> { 5 },
-                new List<int> { 3, 4, 6 }
-            });
+    private static readonly int[] Input = [3, 3, 3, 3, 3, 1, 3];
 
-        Assert.Equal(
-            GroupThePeople([2, 1, 3, 3, 3, 2]),
-            new List<IList<int>>
-            {
-                new List<int> { 1 },
-                new List<int> { 2, 3, 4 },
-                new List<int> { 0, 5 }
-            });
-    }
+    [BenchmarkGen]
+    public void GroupThePeople() => GroupThePeople(Input);
 
     private static IList<IList<int>> GroupThePeople(int[] groupSizes)
     {

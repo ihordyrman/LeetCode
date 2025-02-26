@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,13 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _704
 {
-    public _704()
-    {
-        Assert.Equal(0, Search(new[] { 2, 5 }, 2));
-        Assert.Equal(0, Search(new[] { 5 }, 5));
-        Assert.Equal(4, Search(new[] { -1, 0, 3, 5, 9, 12 }, 9));
-        Assert.Equal(-1, Search(new[] { -1, 0, 3, 5, 9, 12 }, 2));
-    }
+    private static readonly int[] Input = [-1, 0, 3, 5, 9, 12];
+
+    [BenchmarkGen]
+    public void Search() => Search(Input, 9);
 
     private static int Search(int[] nums, int target)
     {

@@ -1,5 +1,5 @@
-﻿using LeetCode.Structures;
-using Xunit;
+﻿using LeetCode.Generators;
+using LeetCode.Structures;
 
 namespace LeetCode.Problems.Medium;
 
@@ -9,15 +9,13 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _1302
 {
-    public _1302()
-    {
-        var treeNode = new TreeNode(
-            1,
-            new TreeNode(2, new TreeNode(4, new TreeNode(7)), new TreeNode(5)),
-            new TreeNode(3, null!, new TreeNode(6, null!, new TreeNode(8))));
+    private static readonly TreeNode Input = new(
+        1,
+        new TreeNode(2, new TreeNode(4, new TreeNode(7)), new TreeNode(5)),
+        new TreeNode(3, null!, new TreeNode(6, null!, new TreeNode(8))));
 
-        Assert.Equal(15, DeepestLeavesSum(treeNode));
-    }
+    [BenchmarkGen]
+    public void DeepestLeavesSum() => DeepestLeavesSum(Input);
 
     private int DeepestLeavesSum(TreeNode? root)
     {

@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,13 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1403
 {
-    public _1403()
-    {
-        Assert.Equal([7, 7, 6], MinSubsequence([4, 4, 7, 6, 7]));
-        Assert.Equal([10, 9], MinSubsequence([4, 3, 10, 9, 8]));
-        Assert.Equal([10], MinSubsequence([10, 2, 5]));
-        Assert.Equal([9, 8, 7, 6], MinSubsequence([4, 6, 4, 4, 8, 5, 1, 7, 9]));
-    }
+    private static readonly int[] Input = [4, 6, 4, 4, 8, 5, 1, 7, 9];
+
+    [BenchmarkGen]
+    public void MinSubsequence() => MinSubsequence(Input);
 
     private static IList<int> MinSubsequence(int[] nums)
     {

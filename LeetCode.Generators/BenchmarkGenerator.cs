@@ -56,7 +56,7 @@ public class BenchmarkGenerator : IIncrementalGenerator
                                private readonly {{typeData.TypeName}} instance = new {{typeData.TypeName}}();
 
                                [Benchmark]
-                               public void Run()
+                               public void {{typeData.MethodName}}()
                                {
                                    instance.{{typeData.MethodName}}();
                                }

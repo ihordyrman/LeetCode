@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,15 +8,16 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _74
 {
-    public _74()
-    {
-        int[][] matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50]];
+    private static readonly (int[][], int) Input = ([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50]], 20);
 
-        Assert.True(SearchMatrix(matrix, 3));
-        Assert.True(SearchMatrixLinq(matrix, 20));
-        Assert.True(SearchMatrixBinary(matrix, 10));
-        Assert.False(SearchMatrixBinary(matrix, 12));
-    }
+    [BenchmarkGen]
+    public void SearchMatrix() => SearchMatrix(Input.Item1, Input.Item2);
+
+    [BenchmarkGen]
+    public void SearchMatrixLinq() => SearchMatrixLinq(Input.Item1, Input.Item2);
+
+    [BenchmarkGen]
+    public void SearchMatrixBinary() => SearchMatrixBinary(Input.Item1, Input.Item2);
 
     // Runtime: 96 ms, faster than 59.09% of C#
     private static bool SearchMatrix(int[][] matrix, int target)

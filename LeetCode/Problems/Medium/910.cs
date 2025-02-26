@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,13 +8,10 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _910
 {
-    public _910()
-    {
-        Assert.Equal(SmallestRangeIi(new[] { 1, 7, 3, 5 }, 6), 6);
-        Assert.Equal(SmallestRangeIi(new[] { 1 }, 0), 1);
-        Assert.Equal(SmallestRangeIi(new[] { 0, 10 }, 2), 6);
-        Assert.Equal(SmallestRangeIi(new[] { 1, 3, 6 }, 3), 3);
-    }
+    private static readonly (int[] nums, int k) Input = ([1, 7, 3, 5], 6);
+
+    [BenchmarkGen]
+    public void SmallestRangeIi() => SmallestRangeIi(Input.nums, Input.k);
 
     private static int SmallestRangeIi(int[] nums, int k)
     {

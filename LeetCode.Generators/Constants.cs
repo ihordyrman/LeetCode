@@ -2,5 +2,5 @@
 
 public static class Constants
 {
-    public const string BenchmarkAttributeName = "ExecutableAttribute";
+    public const string BenchmarkAttributeName = "BenchmarkGenAttribute";
 }

@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,13 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1941
 {
-    public _1941()
-    {
-        Assert.True(SlowAreOccurrencesEqual("abacbc"));
-        Assert.False(FastAreOccurrencesEqual("aaabb"));
-    }
+    private const string Input = "abacbc";
+
+    [BenchmarkGen]
+    public void FastAreOccurrencesEqual() => FastAreOccurrencesEqual(Input);
+
+    [BenchmarkGen]
+    public void SlowAreOccurrencesEqual() => SlowAreOccurrencesEqual(Input);
 
     private static bool FastAreOccurrencesEqual(string s)
     {

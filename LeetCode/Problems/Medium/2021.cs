@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -7,12 +7,10 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _2021
 {
-    public _2021()
-    {
-        Assert.Equal(1, FinalValueAfterOperations(["--X", "X++", "X++"]));
-        Assert.Equal(3, FinalValueAfterOperations(["++X", "++X", "X++"]));
-        Assert.Equal(0, FinalValueAfterOperations(["X++", "++X", "--X", "X--"]));
-    }
+    private static readonly string[] Input = ["X++", "++X", "--X", "X--"];
+
+    [BenchmarkGen]
+    public void FinalValueAfterOperations() => FinalValueAfterOperations(Input);
 
     private static int FinalValueAfterOperations(string[] operations)
     {

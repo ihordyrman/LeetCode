@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Medium;
 
@@ -8,19 +8,11 @@ namespace LeetCode.Problems.Medium;
 /// </summary>
 public class _1828
 {
-    public _1828()
-    {
-        int[][] points = [[1, 3], [3, 3], [5, 3], [2, 2]];
+    private static readonly (int[][] points, int[][] queries) Input = (
+        [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], [[1, 2, 2], [2, 2, 2], [4, 3, 2], [4, 3, 3]]);
 
-        int[][] queries = [[2, 3, 1], [4, 3, 1], [1, 1, 2]];
-
-        int[][] points2 = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]];
-
-        int[][] queries2 = [[1, 2, 2], [2, 2, 2], [4, 3, 2], [4, 3, 3]];
-
-        Assert.Equal(CountPoints(points, queries), new[] { 3, 2, 2 });
-        Assert.Equal(CountPoints(points2, queries2), new[] { 2, 3, 2, 4 });
-    }
+    [BenchmarkGen]
+    public void CountPoints() => CountPoints(Input.points, Input.queries);
 
     private static int[] CountPoints(int[][] points, int[][] queries)
     {

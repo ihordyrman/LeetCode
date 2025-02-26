@@ -1,4 +1,5 @@
-﻿using LeetCode.Structures;
+﻿using LeetCode.Generators;
+using LeetCode.Structures;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,7 +9,15 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _226
 {
-    public TreeNode InvertTree(TreeNode? root)
+    private static readonly TreeNode Input = new(
+        1,
+        new TreeNode(2, new TreeNode(4, new TreeNode(7)), new TreeNode(5)),
+        new TreeNode(3, null!, new TreeNode(6, null!, new TreeNode(8))));
+
+    [BenchmarkGen]
+    public void InvertTree() => InvertTree(Input);
+
+    private TreeNode InvertTree(TreeNode? root)
     {
         if (root == null || (root.Left == null && root.Right == null))
         {

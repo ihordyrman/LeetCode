@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,13 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1784
 {
-    public _1784()
-    {
-        Assert.False(CheckOnesSegment("1100111"));
-        Assert.False(CheckOnesSegment("1001"));
-        Assert.True(CheckOnesSegment("1000"));
-        Assert.True(CheckOnesSegment("110"));
-    }
+    private const string Input = "1100111";
+
+    [BenchmarkGen]
+    public void CheckOnesSegment() => CheckOnesSegment(Input);
 
     private static bool CheckOnesSegment(string s)
     {

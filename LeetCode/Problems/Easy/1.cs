@@ -10,10 +10,13 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1
 {
-    private static readonly int[] Arr = [2, 7, 11, 15];
+    private static readonly int[] Input = [2, 7, 11, 15];
 
-    [Executable]
-    public void TwoSum() => TwoSum2(Arr, 9);
+    [BenchmarkGen]
+    public void TwoSum() => TwoSum2(Input, 9);
+
+    [BenchmarkGen]
+    public void TwoSum2() => TwoSum2(Input, 9);
 
     private int[] TwoSum(int[] nums, int target)
     {

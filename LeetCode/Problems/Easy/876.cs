@@ -1,4 +1,5 @@
-﻿using LeetCode.Structures;
+﻿using LeetCode.Generators;
+using LeetCode.Structures;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,7 +9,12 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _876
 {
-    public static ListNode? MiddleNode(ListNode head)
+    private static readonly ListNode Input = new(1, new ListNode(0, new ListNode(0, new ListNode(1, new ListNode(0)))));
+
+    [BenchmarkGen]
+    public void MiddleNode() => MiddleNode(Input);
+
+    private ListNode? MiddleNode(ListNode head)
     {
         if (head == null)
         {

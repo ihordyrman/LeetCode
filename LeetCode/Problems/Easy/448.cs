@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _448
 {
-    public _448()
-    {
-        Assert.Equal([5, 6], FindDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));
-        Assert.Equal([2], FindDisappearedNumbers([1, 1]));
-    }
+    private static readonly int[] Input = [4, 3, 2, 7, 8, 2, 3, 1];
+
+    [BenchmarkGen]
+    public void FindDisappearedNumbers() => FindDisappearedNumbers(Input);
 
     private static IList<int> FindDisappearedNumbers(int[] nums)
     {

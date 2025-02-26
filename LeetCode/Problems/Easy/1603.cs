@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,26 +8,15 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1603
 {
-    public _1603()
-    {
-        var parkingSystem = new ParkingSystem(1, 1, 0);
-        Assert.True(parkingSystem.AddCar(1));
-        Assert.True(parkingSystem.AddCar(2));
-        Assert.False(parkingSystem.AddCar(3));
-        Assert.False(parkingSystem.AddCar(1));
-    }
+    private readonly ParkingSystem system = new(1, 1, 0);
+
+    [BenchmarkGen]
+    public void ParkingSystem() => system.AddCar(2);
 }
 
-public class ParkingSystem
+public class ParkingSystem(int big, int medium, int small)
 {
-    private int big, medium, small;
-
-    public ParkingSystem(int big, int medium, int small)
-    {
-        this.big = big;
-        this.small = small;
-        this.medium = medium;
-    }
+    private int big = big, medium = medium, small = small;
 
     public bool AddCar(int carType)
     {

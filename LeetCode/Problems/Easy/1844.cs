@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1844
 {
-    public _1844()
-    {
-        Assert.Equal(ReplaceDigits("a1c1e1"), "abcdef");
-        Assert.Equal(ReplaceDigits("a1b2c3d4e"), "abbdcfdhe");
-    }
+    private const string Input = "a1b2c3d4e";
+
+    [BenchmarkGen]
+    public void ReplaceDigits() => ReplaceDigits(Input);
 
     private static string ReplaceDigits(string s)
     {

@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,13 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1221
 {
-    public _1221()
-    {
-        Assert.Equal(BalancedStringSplit("RLRRLLRLRL"), 4);
-        Assert.Equal(BalancedStringSplit("RLLLLRRRLR"), 3);
-        Assert.Equal(BalancedStringSplit("LLLLRRRR"), 1);
-        Assert.Equal(BalancedStringSplit("RLRRRLLRLL"), 2);
-    }
+    private const string Input = "RLRRLLRLRL";
+
+    [BenchmarkGen]
+    public void BalancedStringSplit() => BalancedStringSplit(Input);
 
     private static int BalancedStringSplit(string s)
     {

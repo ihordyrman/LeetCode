@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _2114
 {
-    public _2114()
-    {
-        Assert.Equal(6, MostWordsFound(["alice and bob love leetcode", "i think so too", "this is great thanks very much"]));
-        Assert.Equal(3, MostWordsFound(["please wait", "continue to fight", "continue to win"]));
-    }
+    private static readonly string[] Input = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"];
+
+    [BenchmarkGen]
+    public void MostWordsFound() => MostWordsFound(Input);
 
     private static int MostWordsFound(string[] sentences)
     {

@@ -10,7 +10,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1290
 {
-    private static readonly ListNode Node = new(1, new ListNode(0, new ListNode(0, new ListNode(1, new ListNode(0)))));
+    private static readonly ListNode Input = new(1, new ListNode(0, new ListNode(0, new ListNode(1, new ListNode(0)))));
+
+    [BenchmarkGen]
+    public void ConvertBinaryNumber() => GetDecimalValue(Input);
 
     private static int GetDecimalValue(ListNode head)
     {
@@ -39,7 +42,4 @@ public class _1290
 
         return (int)resultValue;
     }
-
-    [Executable]
-    public void ConvertBinaryNumber() => GetDecimalValue(Node);
 }

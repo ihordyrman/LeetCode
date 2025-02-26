@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,7 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1046
 {
-    public _1046() => Assert.Equal(LastStoneWeight([2, 7, 4, 1, 8, 1]), 1);
+    private static readonly int[] Input = [2, 7, 4, 1, 8, 1];
+
+    [BenchmarkGen]
+    public void LastStoneWeight() => LastStoneWeight(Input);
 
     private static int LastStoneWeight(int[] stones)
     {

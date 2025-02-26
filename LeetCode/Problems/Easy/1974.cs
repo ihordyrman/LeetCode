@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,13 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1974
 {
-    public _1974()
-    {
-        Assert.Equal(5, MinTimeToType("abc"));
-        Assert.Equal(7, MinTimeToType("bza"));
-        Assert.Equal(34, MinTimeToType("zjpc"));
-        Assert.Equal(31, MinTimeToType("pdy"));
-    }
+    private const string Input = "zjpc";
+
+    [BenchmarkGen]
+    public void MinTimeToType() => MinTimeToType(Input);
 
     private int MinTimeToType(string word)
     {

@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,17 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1370
 {
-    public _1370()
-    {
-        Assert.Equal(SortString("aaaabbbbcccc"), "abccbaabccba");
-        Assert.Equal(SortStringLinq("aaaabbbbcccc"), "abccbaabccba");
-        Assert.Equal(SortString("rat"), "art");
-        Assert.Equal(SortStringLinq("rat"), "art");
-        Assert.Equal(SortString("leetcode"), "cdelotee");
-        Assert.Equal(SortStringLinq("leetcode"), "cdelotee");
-        Assert.Equal(SortString("spo"), "ops");
-        Assert.Equal(SortStringLinq("spo"), "ops");
-    }
+    private const string Input = "aaaabbbbcccc";
+
+    [BenchmarkGen]
+    public void SortString() => SortString(Input);
 
     private static string SortString(string s)
     {

@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,11 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1534
 {
-    public _1534()
-    {
-        Assert.Equal(CountGoodTriplets([3, 0, 1, 1, 9, 7], 7, 2, 3), 4);
-        Assert.Equal(CountGoodTriplets([1, 1, 2, 2, 3], 0, 0, 1), 0);
-    }
+    private static readonly (int[] arr, int a, int b, int c) Input = ([3, 0, 1, 1, 9, 7], 7, 2, 3);
+
+    [BenchmarkGen]
+    public void CountGoodTriplets() => CountGoodTriplets(Input.arr, Input.a, Input.b, Input.c);
 
     private static int CountGoodTriplets(int[] arr, int a, int b, int c)
     {

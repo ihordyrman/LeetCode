@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,12 +8,10 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _1880
 {
-    public _1880()
-    {
-        Assert.True(IsSumEqual("acb", "cba", "cdb"));
-        Assert.True(IsSumEqual("aaa", "a", "aaaa"));
-        Assert.False(IsSumEqual("aaa", "a", "aab"));
-    }
+    private static readonly (string first, string second, string target) Input = ("acb", "cba", "cdb");
+
+    [BenchmarkGen]
+    public void IsSumEqual() => IsSumEqual(Input.first, Input.second, Input.target);
 
     private static bool IsSumEqual(string firstWord, string secondWord, string targetWord)
     {

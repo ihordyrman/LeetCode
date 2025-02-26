@@ -1,4 +1,4 @@
-﻿using Xunit;
+﻿using LeetCode.Generators;
 
 namespace LeetCode.Problems.Easy;
 
@@ -8,15 +8,13 @@ namespace LeetCode.Problems.Easy;
 /// </summary>
 public class _169
 {
-    public _169()
-    {
-        Assert.Equal(3, MajorityElement([3, 2, 3]));
-        Assert.Equal(2, MajorityElement([2, 2, 1, 1, 1, 2, 2]));
-        Assert.Equal(5, MajorityElement([6, 5, 5]));
-        Assert.Equal(3, MajorityElementFast([3, 2, 3]));
-        Assert.Equal(2, MajorityElementFast([2, 2, 1, 1, 1, 2, 2]));
-        Assert.Equal(5, MajorityElementFast([6, 5, 5]));
-    }
+    private static readonly int[] Input = [2, 2, 1, 1, 1, 2, 2];
+
+    [BenchmarkGen]
+    public void MajorityElement() => MajorityElement(Input);
+
+    [BenchmarkGen]
+    public void MajorityElementFast() => MajorityElementFast(Input);
 
     // Slow, but consume less memory.
     private static int MajorityElement(int[] nums)

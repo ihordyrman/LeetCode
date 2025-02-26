@@ -1,4 +1,6 @@
-﻿namespace LeetCode.Problems.Easy;
+﻿using LeetCode.Generators;
+
+namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     278. First Bad Version
@@ -6,6 +8,11 @@
 /// </summary>
 public class _278
 {
+    private const int Version = 45;
+
+    [BenchmarkGen]
+    public void FirstBadVersion() => FirstBadVersion(Version);
+
     private static int FirstBadVersion(int n)
     {
         var left = 1;
