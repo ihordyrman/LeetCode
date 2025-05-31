@@ -1,0 +1,8 @@
+﻿<Solution>
+  <Folder Name="/Items/">
+    <File Path=".gitignore" />
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="LeetCode.Generators\LeetCode.Generators.csproj" Type="Classic C#" />
+  <Project Path="LeetCode\LeetCode.csproj" Type="Classic C#" />
+</Solution>

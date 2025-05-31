@@ -13,7 +13,7 @@ public class _33
     [BenchmarkGen]
     public void Search() => Search(Input.nums, Input.target);
 
-    private static int Search(int[] nums, int target)
+    private static int Search(int[]? nums, int target)
     {
         if (nums == null || nums.Length == 0)
         {
