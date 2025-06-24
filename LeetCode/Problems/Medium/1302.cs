@@ -33,7 +33,7 @@ public class _1302
                 return;
             }
 
-            if (node.Left is null && node.Right is null)
+            if (node.left is null && node.right is null)
             {
                 if (depth >= maxD)
                 {
@@ -50,8 +50,8 @@ public class _1302
             }
 
             // Traverse to the left and right nodes
-            Traverse(node.Left!, depth + 1, ref maxD, maxV);
-            Traverse(node.Right!, depth + 1, ref maxD, maxV);
+            Traverse(node.left!, depth + 1, ref maxD, maxV);
+            Traverse(node.right!, depth + 1, ref maxD, maxV);
         }
     }
 }

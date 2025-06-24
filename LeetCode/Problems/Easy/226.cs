@@ -19,7 +19,7 @@ public class _226
 
     private TreeNode InvertTree(TreeNode? root)
     {
-        if (root == null || (root.Left == null && root.Right == null))
+        if (root == null || (root.left == null && root.right == null))
         {
             return root!;
         }
@@ -31,20 +31,20 @@ public class _226
         {
             TreeNode? left = null!;
             TreeNode? right = null!;
-            if (node!.Left != null)
+            if (node!.left != null)
             {
-                left = node.Left;
+                left = node.left;
                 InvertNodes(left);
             }
 
-            if (node.Right != null)
+            if (node.right != null)
             {
-                right = node.Right;
+                right = node.right;
                 InvertNodes(right);
             }
 
-            node.Left = right;
-            node.Right = left;
+            node.left = right;
+            node.right = left;
         }
     }
 }
