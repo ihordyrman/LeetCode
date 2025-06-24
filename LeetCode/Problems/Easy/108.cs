@@ -22,27 +22,37 @@ public class _108
                 return new TreeNode(nums[0]);
         }
 
-        var middle = nums.Length / 2;
+        var range = GetRange(0, nums.Length);
+        return new TreeNode(
+            nums[range.middle],
+            InsertNodes(range.start_left, range.end_left),
+            InsertNodes(range.start_right, range.end_right));
 
-        Span<int> numbers = nums.AsSpan();
-        Span<int> leftSide = numbers[..middle];
-        Span<int> rightSide = numbers[(middle + 1)..];
-        return new TreeNode(nums[middle], InsertNodes(leftSide), InsertNodes(rightSide));
-
-        static TreeNode? InsertNodes(Span<int> slice)
+        TreeNode? InsertNodes(int start, int end)
         {
-            switch (slice)
+            switch (end - start)
             {
-                case { Length: 0 }:
+                case <= 0:
                     return null;
-                case { Length: 1 }:
-                    return new TreeNode(slice[0]);
+                case 1:
+                    return new TreeNode(nums[start]);
             }
 
-            var middle = slice.Length / 2;
-            Span<int> leftSide = slice[..middle];
-            Span<int> rightSide = slice[(middle + 1)..];
-            return new TreeNode(slice[middle], InsertNodes(leftSide), InsertNodes(rightSide));
+            var range = GetRange(start, end);
+            return new TreeNode(
+                nums[range.middle],
+                InsertNodes(range.start_left, range.end_left),
+                InsertNodes(range.start_right, range.end_right));
+        }
+
+        (int middle, int start_left, int end_left, int start_right, int end_right) GetRange(int start, int end)
+        {
+            int middle = start + (end - start) / 2;
+            int leftSideStart = start;
+            int leftSideEnd = middle;
+            int rightSideStart = middle + 1;
+            int rightSideEnd = end;
+            return (middle, leftSideStart, leftSideEnd, rightSideStart, rightSideEnd);
         }
     }
 }
