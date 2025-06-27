@@ -17,7 +17,7 @@ public static class ArrayExtensions
 
             if (nums.Length > 1 && i != nums.Length - 1)
             {
-                builder.Append("; ");
+                builder.Append(", ");
             }
         }
 
