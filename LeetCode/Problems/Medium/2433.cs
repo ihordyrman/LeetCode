@@ -21,20 +21,17 @@ public class _2433
     // - pref[4] = 5 ^ 7 ^ 2 ^ 3 ^ 2 = 1.
     private static int[] FindArray(int[] pref)
     {
-        int[] result = new int[pref.Length];
-
-        for (int i = 0; i < pref.Length; i++)
+        int previous = pref[0];
+        for (int i = 1; i < pref.Length; i++)
         {
-            if (i == 0)
-            {
-                result[i] = pref[i];
-                continue;
-            }
-
             // if a ^ b = c then a ^ c = b
-            result[i] = pref[i - 1] ^ pref[i];
+            // (5 ^ 7) ^ x = 0
+            // (5 ^ 7) ^ 0 = x
+            var temp = pref[i];
+            pref[i] = previous ^ pref[i];
+            previous = temp;
         }
 
-        return result;
+        return pref;
     }
 }
