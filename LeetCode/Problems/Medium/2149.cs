@@ -12,9 +12,31 @@ public class _2149
     private static readonly int[] Input2 = [28, 41, 1, -5, -22, -8];
 
     // Expected: [28, -41, 22, -8, 46, -37, 35, -9, 18, -6, 19, -26, 15, -37, 14, -10, 31, -9]
-    public static void Execute() => RearrangeArraySlow(Input).Display();
+    public static void Execute() => RearrangeArray(Input).Display();
 
-    // No additional allocations, but time limit exceeded
+    // Attempt #1
+    private static int[] RearrangeArrayLazy(int[] nums)
+    {
+        int[] result = new int[nums.Length];
+        int[] positive = new int[nums.Length / 2];
+        int[] negative = new int[nums.Length / 2];
+
+        for (int i = 0, n = 0, p = 0; i < nums.Length;)
+        {
+            if (nums[i] > 0) positive[p++] = nums[i++];
+            else negative[n++] = nums[i++];
+        }
+
+        for (int i = 0, n = 0, p = 0; i < nums.Length;)
+        {
+            result[i++] = positive[p++];
+            result[i++] = negative[n++];
+        }
+
+        return result;
+    }
+
+    // Attempt #2: No additional allocations, but time limit exceeded
     private static int[] RearrangeArraySlow(int[] nums)
     {
         for (int i = 0; i < nums.Length; i++)
@@ -70,22 +92,25 @@ public class _2149
         }
     }
 
-    private static int[] RearrangeArrayLazy(int[] nums)
+    // Attempt #3
+    private static int[] RearrangeArray(int[] nums)
     {
         int[] result = new int[nums.Length];
-        int[] positive = new int[nums.Length / 2];
-        int[] negative = new int[nums.Length / 2];
+        int positive = 0;
+        int negative = 1;
 
-        for (int i = 0, n = 0, p = 0; i < nums.Length;)
+        foreach (var num in nums)
         {
-            if (nums[i] > 0) positive[p++] = nums[i++];
-            else negative[n++] = nums[i++];
-        }
-
-        for (int i = 0, n = 0, p = 0; i < nums.Length;)
-        {
-            result[i++] = positive[p++];
-            result[i++] = negative[n++];
+            if (num > 0)
+            {
+                result[positive] = num;
+                positive += 2;
+            }
+            else
+            {
+                result[negative] = num;
+                negative += 2;
+            }
         }
 
         return result;
