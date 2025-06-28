@@ -9,46 +9,65 @@ namespace LeetCode.Problems.Medium;
 public class _2149
 {
     private static readonly int[] Input = [28, -41, 22, -8, -37, 46, 35, -9, 18, -6, 19, -26, -37, -10, -9, 15, 14, 31];
+    private static readonly int[] Input2 = [28, 41, 1, -5, -22, -8];
 
     // Expected: [28, -41, 22, -8, 46, -37, 35, -9, 18, -6, 19, -26, 15, -37, 14, -10, 31, -9]
-    // Actual:   [28, -41, 22, -8, 46, -37, 35, -9, 18, -6, 19, -26, 15, -10, 14, -37, 31, -9]
-    public static void Execute() => RearrangeArrayLazy(Input).Display();
+    public static void Execute() => RearrangeArraySlow(Input).Display();
 
-    private static int[] RearrangeArray(int[] nums)
+    // No additional allocations, but time limit exceeded
+    private static int[] RearrangeArraySlow(int[] nums)
     {
         for (int i = 0; i < nums.Length; i++)
         {
             if (i % 2 == 0 && nums[i] < 0)
             {
+                int swap = i;
                 for (int j = i + 1; j < nums.Length; j++)
                 {
-                    // instead of doing it I need to make shift left for a rest of array
-                    if (nums[j] > 0)
-                    {
-                        int temp = nums[i];
-                        nums[i] = nums[j];
-                        nums[j] = temp;
-                        break;
-                    }
+                    if (nums[j] <= 0) continue;
+                    swap = j;
+                    break;
                 }
+
+                int value = nums[i];
+                nums[i] = nums[swap];
+                ShiftRight(i + 1, value, swap);
             }
 
             if (i % 2 == 1 && nums[i] > 0)
             {
+                int swap = i;
                 for (int j = i + 1; j < nums.Length; j++)
                 {
-                    if (nums[j] < 0)
-                    {
-                        int temp = nums[i];
-                        nums[i] = nums[j];
-                        nums[j] = temp;
-                        break;
-                    }
+                    if (nums[j] >= 0) continue;
+                    swap = j;
+                    break;
                 }
+
+                int value = nums[i];
+                nums[i] = nums[swap];
+                ShiftRight(i + 1, value, swap);
             }
         }
 
         return nums;
+
+        void ShiftRight(int start, int value, int end)
+        {
+            int previous = value;
+            for (int i = start; i <= end; i++)
+            {
+                if (i == start)
+                {
+                    previous = nums[i];
+                    nums[i] = value;
+                }
+                else if (i == end)
+                    nums[i] = previous;
+                else
+                    (nums[i], previous) = (previous, nums[i]);
+            }
+        }
     }
 
     private static int[] RearrangeArrayLazy(int[] nums)
@@ -57,16 +76,16 @@ public class _2149
         int[] positive = new int[nums.Length / 2];
         int[] negative = new int[nums.Length / 2];
 
-        for (int i = 0, n = 0, p = 0; i < nums.Length; i++)
+        for (int i = 0, n = 0, p = 0; i < nums.Length;)
         {
-            if (nums[i] > 0) positive[p++] = nums[i];
-            else negative[n++] = nums[i];
+            if (nums[i] > 0) positive[p++] = nums[i++];
+            else negative[n++] = nums[i++];
         }
 
-        for (int i = 0, n = 0, p = 0; i < nums.Length; i += 2)
+        for (int i = 0, n = 0, p = 0; i < nums.Length;)
         {
-            result[i] = positive[p++];
-            result[i + 1] = negative[n++];
+            result[i++] = positive[p++];
+            result[i++] = negative[n++];
         }
 
         return result;
