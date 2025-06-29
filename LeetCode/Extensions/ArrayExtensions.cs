@@ -4,7 +4,11 @@ namespace LeetCode.Extensions;
 
 public static class ArrayExtensions
 {
-    public static void Display(this int[] nums)
+    public static void Display(this int[] nums) => Console.WriteLine(GetString(nums));
+
+    public static string Stringify(this int[] nums) => GetString(nums);
+
+    private static string GetString(int[] nums)
     {
         var builder = new StringBuilder();
 
@@ -22,7 +26,6 @@ public static class ArrayExtensions
         }
 
         builder.Append(']');
-
-        Console.WriteLine(builder.ToString());
+        return builder.ToString();
     }
 }
