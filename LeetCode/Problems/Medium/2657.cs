@@ -22,13 +22,14 @@ public class _2657
     private static int[] FindThePrefixCommonArrayLazyAttempt(int[] A, int[] B)
     {
         int[] result = new int[A.Length];
+        int counter = 0;
         Dictionary<int, int> counts = [];
 
         for (int i = 0; i < A.Length; i++)
         {
-            if (!counts.TryAdd(A[i], 1)) counts[A[i]]++;
-            if (!counts.TryAdd(B[i], 1)) counts[B[i]]++;
-            result[i] = counts.Values.Count(x => x == 2);
+            if (!counts.TryAdd(A[i], 1)) counter++;
+            if (!counts.TryAdd(B[i], 1)) counter++;
+            result[i] = counter;
         }
 
         return result;
