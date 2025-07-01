@@ -8,10 +8,10 @@ public class _2610
 
     public static void Execute() => FindMatrix(Input).Display();
 
+    // First attempt. 4 ms. Beats 47.73%
     private static IList<IList<int>> FindMatrix(int[] nums)
     {
         Dictionary<int, int> dic = [];
-
         foreach (var num in nums)
         {
             if (!dic.TryAdd(num, 1))
@@ -19,28 +19,23 @@ public class _2610
         }
 
         IList<IList<int>> result = [];
-        bool moreLeft = true;
-
-        while (moreLeft)
+        while (true)
         {
-            result.Add([]);
             bool found = false;
-            int index = result.Count - 1;
-            foreach (var (key, value) in dic)
+            int index = result.Count;
+            foreach (var (num, count) in dic)
             {
-                if (value != 0)
+                if (count != 0)
                 {
-                    result[index].Add(key);
-                    dic[key]--;
+                    if (result.Count == index) result.Add([]);
+
+                    result[index].Add(num);
+                    dic[num]--;
                     found = true;
                 }
             }
 
-            if (!found)
-            {
-                result.RemoveAt(index);
-                moreLeft = false;
-            }
+            if (!found) break;
         }
 
         return result;
