@@ -2,6 +2,7 @@
     <Folder Name="/Items/">
         <File Path=".gitignore" />
         <File Path=".editorconfig" />
+        <File Path="README.md" />
     </Folder>
     <Project Path="LeetCode.Generators\LeetCode.Generators.csproj" Type="Classic C#" />
     <Project Path="LeetCode\LeetCode.csproj" Type="Classic C#" />
