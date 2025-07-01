@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Text;
 
 namespace LeetCode.Extensions;
@@ -5,6 +6,23 @@ namespace LeetCode.Extensions;
 public static class ArrayExtensions
 {
     public static void Display(this int[] nums) => Console.WriteLine(GetString(nums));
+
+    public static void Display<T>(this IEnumerable<IEnumerable<T>> nums)
+    {
+        var builder = new StringBuilder();
+
+        builder.Append('[');
+        builder.AppendLine();
+
+        foreach (var num in nums)
+        {
+            builder.Append("  " + GetString(num));
+            builder.AppendLine();
+        }
+
+        builder.Append(']');
+        Console.WriteLine(builder.ToString());
+    }
 
     public static string Stringify(this int[] nums) => GetString(nums);
 
@@ -24,6 +42,25 @@ public static class ArrayExtensions
                 builder.Append(", ");
             }
         }
+
+        builder.Append(']');
+        return builder.ToString();
+    }
+
+    private static string GetString<T>(IEnumerable<T> nums)
+    {
+        var builder = new StringBuilder();
+
+        builder.Append('[');
+
+        foreach (var num in nums)
+        {
+            builder.Append(num);
+            builder.Append(", ");
+        }
+
+        // remove last ", "
+        builder.Remove(builder.Length - 2, 2);
 
         builder.Append(']');
         return builder.ToString();
