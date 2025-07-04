@@ -11,8 +11,9 @@ public class _2482
     private static readonly int[][] Input = [[0, 1, 1], [1, 0, 1], [0, 0, 1]];
     private static readonly int[][] Input2 = [[1, 1, 1], [1, 1, 1]];
 
-    public static void Execute() => OnesMinusZeros(Input2).Display();
+    public static void Execute() => OnesMinusZerosBetter(Input2).Display();
 
+    // First attempt
     private static int[][] OnesMinusZeros(int[][] grid)
     {
         var onesCol = new int[grid[0].Length];
@@ -43,6 +44,28 @@ public class _2482
             {
                 grid[i][j] = (onesRow[i] + onesCol[j]) - (zeroesRow[i] + zeroesCol[j]);
             }
+        }
+
+        return grid;
+    }
+
+    // Second attempt
+    private static int[][] OnesMinusZerosBetter(int[][] grid)
+    {
+        int[] col = new int[grid[0].Length];
+        int[] row = new int[grid.Length];
+
+        for (int i = 0; i < grid.Length; i++)
+        for (int j = 0; j < grid[i].Length; j++)
+        {
+            row[i] += grid[i][j] == 1 ? 1 : -1;
+            col[j] += grid[i][j] == 1 ? 1 : -1;
+        }
+
+        for (int i = 0; i < grid.Length; i++)
+        for (int j = 0; j < grid[i].Length; j++)
+        {
+            grid[i][j] = col[j] + row[i];
         }
 
         return grid;
