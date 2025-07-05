@@ -23,8 +23,10 @@ public class _1817
             int id = logs[i][0];
             int minute = logs[i][1];
 
-            dic.TryAdd(id, []);
-            dic[id].Add(minute);
+            if (dic.TryGetValue(id, out var minutes))
+                minutes.Add(minute);
+            else
+                dic[id] = [minute];
         }
 
         foreach (var (_, minute) in dic)
