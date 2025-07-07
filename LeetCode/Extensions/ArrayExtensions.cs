@@ -23,7 +23,7 @@ public static class ArrayExtensions
         Console.WriteLine(builder.ToString());
     }
 
-    public static string Stringify(this int[] nums) => GetString(nums);
+    public static string Stringify<T>(this T[] nums) => GetString(nums);
 
     private static string GetString(int[] nums)
     {
