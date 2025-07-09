@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Easy;
+﻿namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1534. Count Good Triplets

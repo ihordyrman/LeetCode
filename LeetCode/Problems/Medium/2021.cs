@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Medium;
+﻿namespace LeetCode.Problems.Medium;
 
 /// <summary>
 ///     https://leetcode.com/problems/brightest-position-on-street/

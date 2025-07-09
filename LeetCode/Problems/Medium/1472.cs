@@ -1,5 +1,3 @@
-using LeetCode.Extensions;
-
 namespace LeetCode.Problems.Medium;
 
 /// <summary>

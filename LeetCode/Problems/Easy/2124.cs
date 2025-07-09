@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Easy;
+﻿namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     2124. Check if All A's Appears Before All B's

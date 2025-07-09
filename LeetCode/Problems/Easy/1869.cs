@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Easy;
+﻿namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1869. Longer Contiguous Segments of Ones than Zeros

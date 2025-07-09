@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Easy;
+﻿namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     2114. Maximum Number of Words Found in Sentences

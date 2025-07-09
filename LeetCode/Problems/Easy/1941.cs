@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Easy;
+﻿namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     1941. Check if All Characters Have Equal Number of Occurrences

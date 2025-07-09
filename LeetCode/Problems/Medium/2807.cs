@@ -1,5 +1,3 @@
-using LeetCode.Structures;
-
 namespace LeetCode.Problems.Medium;
 
 public class _2807

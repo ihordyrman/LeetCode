@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Medium;
+﻿namespace LeetCode.Problems.Medium;
 
 /// <summary>
 ///     33. Search in Rotated Sorted Array

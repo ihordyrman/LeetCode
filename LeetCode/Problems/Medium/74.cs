@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Medium;
+﻿namespace LeetCode.Problems.Medium;
 
 /// <summary>
 ///     74. Search a 2D Matrix

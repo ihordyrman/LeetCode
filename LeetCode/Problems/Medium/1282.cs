@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Medium;
+﻿namespace LeetCode.Problems.Medium;
 
 /// <summary>
 ///     1282. Group the People Given the Group Size They Belong To

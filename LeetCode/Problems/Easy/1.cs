@@ -1,7 +1,5 @@
 ﻿// 1. Two Sum
 
-using LeetCode.Generators;
-
 namespace LeetCode.Problems.Easy;
 
 /// <summary>

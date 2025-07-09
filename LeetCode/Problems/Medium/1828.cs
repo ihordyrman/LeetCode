@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Medium;
+﻿namespace LeetCode.Problems.Medium;
 
 /// <summary>
 ///     1828. Queries on Number of Points Inside a Circle

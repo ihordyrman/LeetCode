@@ -2,8 +2,10 @@ using System.Text;
 
 namespace LeetCode.Extensions;
 
-public static class ArrayExtensions
+public static class Extensions
 {
+    public static void Display(this string value) => Console.WriteLine(value);
+
     public static void Display(this int[] nums) => Console.WriteLine(GetString(nums));
 
     public static void Display<T>(this IEnumerable<IEnumerable<T>> nums)

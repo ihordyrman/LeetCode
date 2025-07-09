@@ -1,7 +1,4 @@
-﻿using LeetCode.Generators;
-using LeetCode.Structures;
-
-namespace LeetCode.Problems.Easy;
+﻿namespace LeetCode.Problems.Easy;
 
 /// <summary>
 ///     226. Invert Binary Tree

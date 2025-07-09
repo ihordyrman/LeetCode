@@ -1,6 +1,4 @@
-﻿using LeetCode.Generators;
-
-namespace LeetCode.Problems.Hard;
+﻿namespace LeetCode.Problems.Hard;
 
 /// <summary>
 ///     745. Prefix and Suffix Search
