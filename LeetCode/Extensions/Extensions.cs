@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Text;
 
 namespace LeetCode.Extensions;
@@ -5,6 +6,9 @@ namespace LeetCode.Extensions;
 public static class Extensions
 {
     public static void Display(this string value) => Console.WriteLine(value);
+
+    public static void Display<T>(this T value)
+        where T : INumber<T> => Console.WriteLine(value);
 
     public static void Display(this int[] nums) => Console.WriteLine(GetString(nums));
 

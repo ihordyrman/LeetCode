@@ -15,10 +15,10 @@ public class _1980
 
     public static void Execute()
     {
-        Console.WriteLine($"Input {Input.Stringify()}, Output: {FindDifferentBinaryStringBetter(Input)}");
-        Console.WriteLine($"Input {Input2.Stringify()}, Output: {FindDifferentBinaryStringBetter(Input2)}");
-        Console.WriteLine($"Input {Input3.Stringify()}, Output: {FindDifferentBinaryStringBetter(Input3)}");
-        Console.WriteLine($"Input {Input4.Stringify()}, Output: {FindDifferentBinaryStringBetter(Input4)}");
+        FindDifferentBinaryStringBetter(Input).Display();
+        FindDifferentBinaryStringBetter(Input2).Display();
+        FindDifferentBinaryStringBetter(Input3).Display();
+        FindDifferentBinaryStringBetter(Input4).Display();
     }
 
     // First attempt. Not great, not terrible.

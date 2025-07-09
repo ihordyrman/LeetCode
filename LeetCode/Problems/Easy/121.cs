@@ -8,7 +8,7 @@ public class _121
 {
     private static readonly int[] Input = [7, 1, 5, 3, 6, 4];
 
-    public static void Execute() => Console.WriteLine(MaxProfit(Input));
+    public static void Execute() => MaxProfit(Input).Display();
 
     [BenchmarkGen]
     public void FastMaxProfit() => MaxProfit(Input);

@@ -12,9 +12,9 @@ public class _2044
 
     public static void Execute()
     {
-        Console.WriteLine($"Input {Input.Stringify()}, Output: {CountMaxOrSubsets(Input)}");
-        Console.WriteLine($"Input {Input2.Stringify()}, Output: {CountMaxOrSubsets(Input2)}");
-        Console.WriteLine($"Input {Input3.Stringify()}, Output: {CountMaxOrSubsets(Input3)}");
+        CountMaxOrSubsets(Input).Display();
+        CountMaxOrSubsets(Input2).Display();
+        CountMaxOrSubsets(Input3).Display();
     }
 
     private static int CountMaxOrSubsets(int[] nums)

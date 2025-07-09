@@ -8,7 +8,7 @@ public class _1791
 {
     private static readonly int[][] Input = [[1, 2], [2, 3], [4, 2]];
 
-    public static void Execute() => Console.WriteLine(FindCenter(Input));
+    public static void Execute() => FindCenter(Input).Display();
 
     // (:
     private static int FindCenter(int[][] edges) =>

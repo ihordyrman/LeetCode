@@ -8,7 +8,7 @@ public class _1394
 {
     private static readonly int[] Input = [2, 2, 3, 4];
 
-    public static void Execute() => Console.WriteLine(FindLucky(Input));
+    public static void Execute() => FindLucky(Input).Display();
 
     private static int FindLucky(int[] arr)
     {
