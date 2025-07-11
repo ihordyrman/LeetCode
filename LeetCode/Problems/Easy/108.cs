@@ -10,34 +10,34 @@ public class _108
 
     public static void Execute() => SortedArrayToBst(Input).Display();
 
-    private static TreeNode SortedArrayToBst(int[] nums)
+    private static TreeNode<int> SortedArrayToBst(int[] nums)
     {
         switch (nums)
         {
             case { Length: 0 }:
                 return null!;
             case { Length: 1 }:
-                return new TreeNode(nums[0]);
+                return new TreeNode<int>(nums[0]);
         }
 
         var range = GetRange(0, nums.Length);
-        return new TreeNode(
+        return new TreeNode<int>(
             nums[range.middle],
             InsertNodes(range.start_left, range.end_left),
             InsertNodes(range.start_right, range.end_right));
 
-        TreeNode? InsertNodes(int start, int end)
+        TreeNode<int>? InsertNodes(int start, int end)
         {
             switch (end - start)
             {
                 case <= 0:
                     return null;
                 case 1:
-                    return new TreeNode(nums[start]);
+                    return new TreeNode<int>(nums[start]);
             }
 
             var range = GetRange(start, end);
-            return new TreeNode(
+            return new TreeNode<int>(
                 nums[range.middle],
                 InsertNodes(range.start_left, range.end_left),
                 InsertNodes(range.start_right, range.end_right));

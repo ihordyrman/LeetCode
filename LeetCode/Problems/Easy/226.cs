@@ -6,15 +6,15 @@
 /// </summary>
 public class _226
 {
-    private static readonly TreeNode Input = new(
+    private static readonly TreeNode<int> Input = new(
         1,
-        new TreeNode(2, new TreeNode(4, new TreeNode(7)), new TreeNode(5)),
-        new TreeNode(3, null!, new TreeNode(6, null!, new TreeNode(8))));
+        new TreeNode<int>(2, new TreeNode<int>(4, new TreeNode<int>(7)), new TreeNode<int>(5)),
+        new TreeNode<int>(3, null!, new TreeNode<int>(6, null!, new TreeNode<int>(8))));
 
     [BenchmarkGen]
     public void InvertTree() => InvertTree(Input);
 
-    private TreeNode InvertTree(TreeNode? root)
+    private TreeNode<int> InvertTree(TreeNode<int>? root)
     {
         if (root == null || (root.left == null && root.right == null))
         {
@@ -24,10 +24,10 @@ public class _226
         InvertNodes(root);
         return root;
 
-        static void InvertNodes(TreeNode? node)
+        static void InvertNodes(TreeNode<int>? node)
         {
-            TreeNode? left = null!;
-            TreeNode? right = null!;
+            TreeNode<int>? left = null!;
+            TreeNode<int>? right = null!;
             if (node!.left != null)
             {
                 left = node.left;

@@ -6,15 +6,15 @@
 /// </summary>
 public class _1302
 {
-    private static readonly TreeNode Input = new(
+    private static readonly TreeNode<int> Input = new(
         1,
-        new TreeNode(2, new TreeNode(4, new TreeNode(7)), new TreeNode(5)),
-        new TreeNode(3, null!, new TreeNode(6, null!, new TreeNode(8))));
+        new TreeNode<int>(2, new TreeNode<int>(4, new TreeNode<int>(7)), new TreeNode<int>(5)),
+        new TreeNode<int>(3, null!, new TreeNode<int>(6, null!, new TreeNode<int>(8))));
 
     [BenchmarkGen]
     public void DeepestLeavesSum() => DeepestLeavesSum(Input);
 
-    private int DeepestLeavesSum(TreeNode? root)
+    private int DeepestLeavesSum(TreeNode<int>? root)
     {
         var maxDepth = 0;
         var maxValue = new Dictionary<int, int>();
@@ -22,7 +22,7 @@ public class _1302
 
         return maxValue[maxDepth];
 
-        void Traverse(TreeNode? node, int depth, ref int maxD, Dictionary<int, int> maxV)
+        void Traverse(TreeNode<int>? node, int depth, ref int maxD, Dictionary<int, int> maxV)
         {
             // check current node
             if (node is null)

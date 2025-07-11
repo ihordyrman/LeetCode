@@ -45,4 +45,26 @@ public class _15
 
         return result;
     }
+
+
+    // todo: finish
+    private static IList<IList<int>> ThreeSumBetter(int[] nums)
+    {
+        Dictionary<int, int> dic = [];
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!dic.TryAdd(nums[i], 1)) dic[nums[i]]++;
+        }
+
+        while (true)
+        {
+            int i, k, j;
+            foreach (var (key, value) in dic)
+            {
+            }
+        }
+
+        return [];
+    }
 }

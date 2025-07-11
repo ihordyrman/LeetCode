@@ -1,17 +1,17 @@
 ﻿namespace LeetCode.Structures;
 
-public class TreeNode(int val = 0, TreeNode? left = null, TreeNode? right = null)
+public class TreeNode<T>(T val = default, TreeNode<T>? left = null, TreeNode<T>? right = null)
 {
-    public readonly int Val = val;
-    public TreeNode? left = left;
-    public TreeNode? right = right;
+    public readonly T Val = val;
+    public TreeNode<T>? left = left;
+    public TreeNode<T>? right = right;
 
     public void Display()
     {
         DisplayHelper(this, "", true);
     }
 
-    private static void DisplayHelper(TreeNode? node, string indent, bool isLast)
+    private static void DisplayHelper(TreeNode<T>? node, string indent, bool isLast)
     {
         if (node == null) return;
 
