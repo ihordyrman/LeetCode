@@ -1,48 +1,51 @@
 namespace LeetCode.Problems.Medium;
 
+/// <summary>
+///     22. Generate Parentheses
+///     https://leetcode.com/problems/generate-parentheses/
+/// </summary>
 public class _22
 {
     public static void Execute()
     {
-        // GenerateParenthesis(2).Display();
         GenerateParenthesis(1).Display();
-        // GenerateParenthesis(3).Display();
+        GenerateParenthesis(2).Display();
+        GenerateParenthesis(3).Display();
     }
 
+    // First attempt
     private static IList<string> GenerateParenthesis(int n)
     {
         IList<string> result = [];
-        int level = 0;
         GoDeep("(");
 
         return result;
 
-        void GoDeep(string path)
+        void GoDeep(string path, int level = 0)
         {
-            if (level >= n)
+            if (level >= n * 2 - 1)
             {
-                if (ValidatePath(path))
-                {
-                    result.Add(path);
-                }
+                if (IsValidPath(path)) result.Add(path);
                 return;
             }
 
-            level++;
-            GoDeep(path + ")");
-            GoDeep(path + "(");
+            GoDeep(path + "(", level + 1);
+            GoDeep(path + ")", level + 1);
         }
 
-        bool ValidatePath(string path)
+        bool IsValidPath(string path)
         {
-            int diff = 0;
+            int open = 0;
+            int close = 0;
             foreach (var ch in path)
             {
-                if (ch == ')') diff--;
-                else diff++;
+                if (ch == ')') close++;
+                else open++;
+
+                if (close > open) return false;
             }
 
-            return diff == 0;
+            return open - close == 0;
         }
     }
 }
