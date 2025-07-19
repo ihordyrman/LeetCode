@@ -1,36 +1,77 @@
 namespace LeetCode.Problems.Medium;
 
+using KeyValue = (int key, int value);
+
 public class _146
 {
     public static void Execute()
     {
-        var cache = new LRUCache(2);
-        cache.Put(1, 1);    // cache is {1=1}
-        cache.Put(2, 2);    // cache is {1=1, 2=2}
-        cache.Get(1);       // return 1
-        cache.Put(3, 3);    // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
-        cache.Get(2);       // returns -1 (not found)
-        cache.Put(4, 4);    // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
-        cache.Get(1);       // return -1 (not found)
-        cache.Get(3);       // return 3
-        cache.Get(4);       // return 4
+        var cache = new LRUCacheBetter(2);
+        cache.Put(1, 1);
+        cache.Put(2, 2);
+        cache.Get(1).Display();
+        cache.Put(3, 3);
+        cache.Get(2).Display();
+        cache.Put(4, 4);
+        cache.Get(1).Display();
+        cache.Get(3).Display();
+        cache.Get(4).Display();
+
+        Console.WriteLine(new string('-', 10));
+
+        cache = new LRUCacheBetter(2);
+        cache.Put(1, 0);
+        cache.Put(2, 2);
+        cache.Get(1).Display();
+        cache.Put(3, 3);
+        cache.Get(2).Display();
+        cache.Put(4, 4);
+        cache.Get(1).Display();
+        cache.Get(3).Display();
+        cache.Get(4).Display();
+
+        Console.WriteLine(new string('-', 10));
+
+        cache = new LRUCacheBetter(2);
+        cache.Put(2, 1);
+        cache.Put(1, 1);
+        cache.Put(2, 3);
+        cache.Put(4, 1);
+        cache.Get(1).Display();
+        cache.Get(2).Display();
+
+        Console.WriteLine(new string('-', 10));
+
+        cache = new LRUCacheBetter(2);
+        cache.Get(2).Display();
+        cache.Put(2, 6);
+        cache.Get(1).Display();
+        cache.Put(1, 5);
+        cache.Put(1, 2);
+        cache.Get(1).Display();
+        cache.Get(2).Display();
     }
 }
 
-
-// ReSharper disable once InconsistentNaming
-
-// Time Limit Exceeded. todo: need to finish
+// Just embarrassing first attempt
 public class LRUCache(int capacity)
 {
-    private readonly Dictionary<int, (int value, DateTime accessed)> cache = new(capacity);
+    private readonly Dictionary<int, int> keyIndex = [];
+    private readonly Dictionary<int, int> indexKey = [];
+    private readonly SortedDictionary<DateTime, int> dateIndex = [];
+    private readonly int[] values = new int[capacity];
+    private readonly DateTime[] dates = new DateTime[capacity];
 
     public int Get(int key)
     {
-        if (cache.ContainsKey(key))
+        if (keyIndex.TryGetValue(key, out var index))
         {
-            cache[key]= (cache[key].value, DateTime.Now);
-            return cache[key].value;
+            var oldDate = dates[index];
+            var date = DateTime.Now;
+            dates[index] = date;
+            dateIndex.Remove(oldDate);
+            dateIndex[date] = index;
+            return values[index];
         }
 
         return -1;
@@ -38,30 +79,78 @@ public class LRUCache(int capacity)
 
     public void Put(int key, int value)
     {
-        if (cache.ContainsKey(key))
+        var date = DateTime.Now;
+        DateTime oldDate;
+
+        if (keyIndex.TryGetValue(key, out var index))
         {
-            cache[key] = (value, DateTime.Now);
+            values[index] = value;
+            oldDate = dates[index];
+            dates[index] = date;
+            dateIndex[date] = index;
+            dateIndex.Remove(oldDate);
+            indexKey[index] = key;
             return;
         }
 
-        if (cache.Keys.Count < capacity)
+        if (keyIndex.Count < capacity)
         {
-            cache.Add(key, (value, DateTime.Now));
+            index = keyIndex.Count;
+            keyIndex.Add(key, index);
+            values[index] = value;
+            dates[index] = date;
+            dateIndex[date] = index;
+            indexKey.Add(index, key);
             return;
         }
 
-        var index = cache.Keys.First();
-        var leastRecent = cache[index].accessed;
-        foreach (var (x, (y, accessed)) in cache)
+        index = dateIndex.First().Value;
+
+        var oldKey = indexKey[index];
+        oldDate = dates[index];
+        dateIndex.Remove(oldDate);
+        indexKey.Remove(index);
+        keyIndex.Remove(oldKey);
+        indexKey.Add(index, key);
+        keyIndex.Add(key, index);
+        dateIndex.Add(date, index);
+        dates[index] = date;
+        values[index] = value;
+    }
+}
+
+public class LRUCacheBetter(int capacity)
+{
+    private readonly LinkedList<KeyValue> list = [];
+    private readonly Dictionary<int, LinkedListNode<KeyValue>> keys = [];
+
+    public int Get(int key)
+    {
+        if (!keys.TryGetValue(key, out var node))
         {
-            if (leastRecent > accessed)
-            {
-                leastRecent = accessed;
-                index = x;
-            }
+            return -1;
         }
 
-        cache.Remove(index);
-        cache.Add(key, (value, DateTime.Now));
+        list.Remove(node);
+        list.AddFirst(node);
+        return node.Value.value;
+    }
+
+    public void Put(int key, int value)
+    {
+        var node = new LinkedListNode<KeyValue>((key, value));
+        list.AddFirst(node);
+
+        if (keys.TryGetValue(key, out var oldNode))
+        {
+            list.Remove(oldNode);
+        }
+        else if (list.Count > capacity)
+        {
+            keys.Remove(list.Last!.Value.key);
+            list.RemoveLast();
+        }
+
+        keys[key] = node;
     }
 }
