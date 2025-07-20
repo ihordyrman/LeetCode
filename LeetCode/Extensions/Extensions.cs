@@ -7,6 +7,8 @@ public static class Extensions
 {
     public static void Display(this string value) => Console.WriteLine(value);
 
+    public static void Display(this bool value) => Console.WriteLine(value ? "True" : "False");
+
     public static void Display<T>(this T value)
         where T : INumber<T> => Console.WriteLine(value);
 
