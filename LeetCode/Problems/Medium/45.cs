@@ -15,6 +15,9 @@ public class _45
     private static readonly int[] Input7 = [2, 1];
     private static readonly int[] Input8 = [1, 2, 0, 1];
     private static readonly int[] Input9 = [3, 2, 1];
+    private static readonly int[] Input10 = [2, 3, 1];
+    private static readonly int[] Input11 = [3, 3, 1, 0, 0];
+    private static readonly int[] Input12 = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0];
 
     public static void Execute()
     {
@@ -27,44 +30,33 @@ public class _45
         Jump(Input7).Display();
         Jump(Input8).Display();
         Jump(Input9).Display();
+        Jump(Input10).Display();
+        Jump(Input11).Display();
+        Jump(Input12).Display();
     }
 
     private static int Jump(int[] nums)
     {
         int jumps = 0;
         if (nums[0] == 0 || nums.Length == 1) return 0;
+        if (nums[0] >= nums.Length - 1) return 1;
 
-        for (int i = 0; i < nums.Length;)
+        for (int i = 0; i + 1 < nums.Length;)
         {
+            if (nums[i] >= nums.Length - i - 1)
+            {
+                jumps++;
+                break;
+            }
+
             int max = 0;
             int index = i;
-            if (i + 1 == nums.Length)
-            {
-                break;
-            }
-
-            if (i + nums[i] >= nums.Length)
-            {
-                jumps++;
-                break;
-            }
-
-            if (nums[i] == 1)
-            {
-                i++;
-                jumps++;
-                continue;
-            }
-
             for (int j = i + 1, count = 0; j < nums.Length && count < nums[i]; j++, count++)
             {
-                if (max <= nums[j])
-                {
-                    max = nums[j];
-                    index = j;
-                }
+                if (max > nums[j]) continue;
 
-                max = Math.Max(max, nums[j]);
+                max = nums[j];
+                index = j;
             }
 
             i = index;
