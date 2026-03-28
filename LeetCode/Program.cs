@@ -7,7 +7,6 @@ public class Program
 {
     public static void Main()
     {
-        BenchmarkRunner.Run<_1_TwoSum_Benchmark>();
-        BenchmarkRunner.Run<_1290_ConvertBinaryNumber_Benchmark>();
+        BenchmarkRunner.Run<_3512_MinOerations_Benchmark>();
     }
 }
